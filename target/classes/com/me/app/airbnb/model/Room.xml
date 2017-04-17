@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.me.app.airbnb.model.Room">
+	<insert id="add" parameterType="com.me.app.airbnb.model.Room">
+		insert into room (roomId,roomName,comments,pv,roomType,latitude,longitude,bookNow,accommodates,bedroom,bathroom,smoke,parking,lift,isNew,nights,unsubscribe,emptyRoomPrice,createTime)
+			value(#{roomId},#{roomName},#{comments},#{pv},#{roomType},#{latitude},#{longitude},#{bookNow},#{accommodates},#{bedroom},#{bathroom},#{smoke},#{parking},#{lift},#{isNew},#{nights},#{unsubscribe},#{emptyRoomPrice},now())
+	</insert>
+	
+	<select id="findCountByRoomId" resultType="java.lang.Integer">
+		select count(*) 
+		from room
+		where roomId=#{roomId}
+	</select>
+</mapper>     
